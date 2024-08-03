@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { LottieAnimation,LottieAnimationCctv,LottieAnimationSecurity,LottieAnimationMaintance } from "../../Assets/Animation"
 function Cards() {
   return (
@@ -9,7 +10,7 @@ function Cards() {
               into your daily life, enhancing comfort, security, and efficiency. Control lighting, climate, 
               entertainment, and security from your smartphone or voice assistants. Transform your home into a 
               smart home controls at your fingertips.</p>
-              <button  className="md:ml-6  bg-blue-600 rounded-md p-2 text-white z-40">Get Details</button>
+              <button  className="md:ml-6  bg-blue-600 rounded-md p-2 text-white z-40"><Link to='/query'>Get Details</Link></button>
           </div>
           <div className="m-4 md:p-12 -z-10">
                <LottieAnimation />
@@ -24,7 +25,7 @@ function Cards() {
                solutions with high-definition cameras, real-time monitoring, and remote access. 
                Safeguard your home or business with our reliable and easy-to-use security technology.
                Experience peace of mind with our professional installation and support services.</p>
-               <button className="md:ml-42 sm:ml-28 ml-32 bg-blue-600 rounded-md p-2 text-white">Get Details</button>
+               <button className="md:ml-42 sm:ml-28 ml-32 bg-blue-600 rounded-md p-2 text-white"><Link to='/query'>Get Details</Link></button>
             </div>
             <div className="md:pl-24">
                 <span className="flex justify-center md:flex-1 md:w-64">
@@ -42,7 +43,7 @@ function Cards() {
                   technology and expert installation. Experience uninterrupted power and sustainable energy 
                   solutions with Us. Power your future today.
                   </p>
-                  <button className="md:ml-60 ml-28 bg-blue-600 rounded-md p-2 text-white">Get Details</button>
+                  <button className="md:ml-60 ml-28 bg-blue-600 rounded-md p-2 text-white"><Link to='/query'>Get Details</Link></button>
               </div>
               <div className="basis-1/2 md:pl-48 pl-8">
                   <span className=""><LottieAnimationSecurity /></span>
@@ -57,7 +58,7 @@ function Cards() {
               running smoothly. Our trained technicians will optimize performance, extend lifespan, 
               and enhance safety, giving you peace of mind year-round. Trust us to safeguard your investments
                and ensure uninterrupted service.</p>
-               <button className="md:ml-42 sm:ml-28 ml-32 bg-blue-600 rounded-md p-2 text-white">Get Details</button>
+               <button className="md:ml-42 sm:ml-28 ml-32 bg-blue-600 rounded-md p-2 text-white"><Link to='/query'>Get Details</Link></button>
             </div>
             <div className="basis-1/2 md:pl-48 pl-4 ml-8">
               <span className=""><LottieAnimationMaintance /></span>
