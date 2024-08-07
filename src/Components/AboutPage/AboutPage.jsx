@@ -8,7 +8,7 @@ const [data,setData] = useState([])
 
 const form = useForm()
  const {handleSubmit,register,setValue,formState} = form;
- const {errors} = formState;
+ const {errors,isDirty} = formState;
   const formHandle = (data)=>{
     console.log(data)
     alert("success")
@@ -147,7 +147,7 @@ const form = useForm()
           <textarea {...register("Enquiries")} readOnly value={data} name="" id="" className='w-full border-2'></textarea>
           
          <div>
-         <button className='bg-blue-500 flex hover:bg-blue-700 hover:cursor-pointer px-4 p-2 rounded-md lg:mx-52 mx-24 text-white'><IoPaperPlaneOutline /></button>
+         <button disabled = {!isDirty} className='bg-blue-500 flex hover:bg-blue-700 hover:cursor-pointer px-4 p-2 rounded-md lg:mx-52 mx-24 text-white'><IoPaperPlaneOutline /></button>
           </div> 
         </div>
       </div>
