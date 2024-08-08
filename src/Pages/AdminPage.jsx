@@ -6,6 +6,7 @@ import Complaints from './../Components/Complaints/Complaints'
 import Customer from './../Components/Customer/Customer'
 import Registration from './../Components/Registration/Registration'
 import Enquiry from './../Components/Enquiry/Enquiry'
+import NewRegistration from './../Components/ComplaintRegister/NewRegistration'
 function AdminPage() {
   const {page} = useContext(AdminPageContext)
   return (
@@ -17,7 +18,7 @@ function AdminPage() {
       {page === 'customer' && <Customer />}
       {page === 'registration' && <Registration />}
       {page === 'enquiry' && <Enquiry />}
-
+      {page === 'newcomplaint' && <NewRegistration />}
       </div>
     </div>
     
