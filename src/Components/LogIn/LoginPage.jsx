@@ -1,11 +1,20 @@
-import React from 'react'
-import { useForm } from 'react-hook-form'
-
+import React, { useContext, useState } from 'react'
+import { FirebaseContex } from '../../Store/FirebaseContext'
+import { useNavigate } from 'react-router-dom'
 
 function LoginPage() {
-  const form = useForm();
-  const {register} = form;
-
+  const {firebase} = useContext(FirebaseContex)
+  const [email , setEmail] = useState('')
+  const [password , setPassword] = useState('')
+  const navigate = useNavigate()
+  const handleSubmit = (e)=>{
+    e.preventDefault()
+    firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
+      navigate('/admin')
+    }).catch((err)=>{
+      alert(err.message)
+    })
+  }
   return (
     <div className='grid mt-8 p-2 gap-4 md:grid-cols-2'>
       <div className='min-h-[350px] hidden md:block'>
@@ -14,19 +23,30 @@ function LoginPage() {
       <div className='rounded-2xl flex justify-center px-2 mx-2'>
         <div className='border-2 rounded-md shadow-lg min-h-[400px] md:min-h-[350px] md:w-3/4 p-2 relative'>
             <h2 className='font-bold p-2 md:text-center md:mt-2 md:mb-4 text-center'>WELCOME BACK !</h2>
+            <form action='#' onSubmit={handleSubmit}>
             <div id='username' className='grid grid-rows-1 md:4/3 m-4 '>
               <span className='my-2'>Username</span>
-              <input type="text" placeholder='Username'  className='p-1 rounded-md bg-slate-200'/>
+              <input 
+              type="text" 
+              placeholder='Username'
+              value={email} 
+              onChange={(e)=>setEmail(e.target.value)}
+               className='p-1 rounded-md bg-slate-200'/>
             </div>
             <div id='password' className='grid grid-rows-1 md:w-4/3 m-4'>
               <span className='my-2'>Password</span>
-              <input type="text" placeholder='Password'  className='p-1 rounded-md bg-slate-200'/>
+              <input type="text"
+               placeholder='Password'
+               value={password}
+               onChange={(e)=>{setPassword(e.target.value)}}
+               className='p-1 rounded-md bg-slate-200'/>
             </div>
             <div className='flex justify-between'>
               <div><input type="checkbox" checked className='cursor-pointer' /><span className='text-blue-500'> Remember Me</span></div>
               <div><p className='text-blue-600 cursor-pointer'>Forgot Password ?</p></div>
             </div>
             <button className='lg:mx-44 mx-24 mt-8 md:mt-8 p-2 px-4 rounded-md text-white bg-blue-500 hover:bg-blue-700'>LogIn</button>
+            </form>
         </div>
       </div>
     </div>
