@@ -10,7 +10,7 @@ function LoginPage() {
   const handleSubmit = (e)=>{
     e.preventDefault()
     firebase.auth().signInWithEmailAndPassword(email,password).then(()=>{
-      navigate('/admin')
+      email === 'admin@gmail.com' ? navigate('/admin') : navigate('/techlogin');
     }).catch((err)=>{
       alert(err.message)
     })
