@@ -1,7 +1,7 @@
 import React,{useContext, useState} from "react"; 
 import {  Link, useNavigate } from "react-router-dom";
 import { FirebaseContex } from "../../Store/FirebaseContext";
-
+import {TechnicianContext} from './../../Store/TechnicianContext'
 
 function Registration() {
 
@@ -13,6 +13,7 @@ function Registration() {
   const [password , setPassword] = useState('')
   const [conpassword , setConpassword] = useState('')
   const {firebase} = useContext(FirebaseContex)
+  const {setTechnician} = useContext(TechnicianContext)
  const navigate = useNavigate()
   const handleSubmit = (e)=>{
     e.preventDefault()
@@ -25,8 +26,17 @@ function Registration() {
     setConpassword('')
     alert(`Technician Registration complect ${email}`)
     firebase.auth().createUserWithEmailAndPassword(email,password).then((result)=>{
-      result.user.updateProfile({displayName:firstname})
+      result.user.updateProfile({displayName:firstname}).then(()=>{
+        firebase.firestore().collection('Technicians').add({
+          id : result.user.uid,
+          TechenicianName : (firstname+''+lastname),
+          Email : email,
+          MobileNumber : mobilenumber,
+          EmployCode : employcode
+        })
+      })
     })
+    setTechnician({"name": firstname , "id": employcode})
     navigate('/login')
   }
 

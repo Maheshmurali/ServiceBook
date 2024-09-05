@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import {  Link } from "react-router-dom";
+import {TechnicianContext} from './../../Store/TechnicianContext'
 function Header() {
   const [menuopen , setMenuOpen] = useState(false)
+
+
   const menubar = ()=>{
         setMenuOpen(!menuopen)
         console.log(menuopen)

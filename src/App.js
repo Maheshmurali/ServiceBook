@@ -7,11 +7,13 @@ import { BrowserRouter as Router,Routes , Route   } from 'react-router-dom';
 import AdminPage from './Pages/AdminPage'
 import Pages from './Store/AdminPageContext'
 import TechPage from './Pages/TechPage'
+import  Technician_Context  from './Store/TechnicianContext';
 
 function App() {
   return (
     <div>
       <Pages>
+        <Technician_Context>
     <Router>
         <Routes>
             <Route exact path='/' element={<Home />} />
@@ -22,6 +24,7 @@ function App() {
             <Route exact path='/techlogin' element={<TechPage />} />
         </Routes>
     </Router>
+    </Technician_Context>
     </Pages>
 </div>
   )
